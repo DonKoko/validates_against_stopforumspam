@@ -21,7 +21,7 @@ module ValidatesAgainstStopForumSpam
 				return if query_options.empty?
 
 				url = "http://www.stopforumspam.com/api?" + query_options.join('&')
-        if Rails.env.production?
+        # if Rails.env.production?
           logger.info "Querying StopForumSpam: #{url}"
           begin
             uri = URI.parse(url)
@@ -36,9 +36,9 @@ module ValidatesAgainstStopForumSpam
           rescue StandardError => e
             logger.warn "Couldn't validate against StopForumSpam: + #{e.message}"
           end
-        else
-          logger.info "Would query StopForumSpam: #{url} in production mode"
-        end
+        # else
+        #   logger.info "Would query StopForumSpam: #{url} in production mode"
+        # end
 			end
 		end
 	end
